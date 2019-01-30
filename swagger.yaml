@@ -1,0 +1,142 @@
+---
+swagger: "2.0"
+info:
+  description: This API returns a json, containing the probability of an Amazon review containing a justification/decision/criteria/alternative/issue.
+  version: "1.0.0"
+  title: Get probabilities for user rationale within Amazon reviews
+  contact:
+    email: stanik@informatik.uni-hamburg.de
+host: 217.172.12.199:9704
+schemes:
+- http
+paths:
+  /hitec/urminer-review/issue:
+    post:
+      description: takes an Amazon review and returns a JSON Object that shows the probability for the review containing an issue.
+      operationId: postAmazonReviewForIssueProbabilities
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+       - in: body
+         name: AmazonReview
+         required: true
+         schema:
+          $ref: "#/definitions/AmazonReview"
+      responses:
+        200:
+          description: JSON object.
+          schema:
+            $ref: "#/definitions/Result"
+        400:
+          description: bad input or could not process.
+  /hitec/urminer-review/alternative:
+    post:
+      description: takes an Amazon review and returns a JSON Object that shows the probability for the review containing an alternative.
+      operationId: postAmazonReviewForAlternativeProbabilities
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+       - in: body
+         name: AmazonReview
+         required: true
+         schema:
+          $ref: "#/definitions/AmazonReview"
+      responses:
+        200:
+          description: JSON object.
+          schema:
+            $ref: "#/definitions/Result"
+        400:
+          description: bad input or could not process.
+  /hitec/urminer-review/criteria:
+    post:
+      description: takes an Amazon review and returns a JSON Object that shows the probability for the review containing a criteria.
+      operationId: postAmazonReviewForCriteriaProbabilities
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+       - in: body
+         name: AmazonReview
+         required: true
+         schema:
+          $ref: "#/definitions/AmazonReview"
+      responses:
+        200:
+          description: JSON object.
+          schema:
+            $ref: "#/definitions/Result"
+        400:
+          description: bad input or could not process.
+  /hitec/urminer-review/decision:
+    post:
+      description: takes an Amazon review and returns a JSON Object that shows the probability for the review containing a decision.
+      operationId: postAmazonReviewForDecisionProbabilities
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+       - in: body
+         name: AmazonReview
+         required: true
+         schema:
+          $ref: "#/definitions/AmazonReview"
+      responses:
+        200:
+          description: JSON object.
+          schema:
+            $ref: "#/definitions/Result"
+        400:
+          description: bad input or could not process.
+  /hitec/urminer-review/justification:
+    post:
+      description: takes an Amazon review and returns a JSON Object that shows the probability for the review containing a justification.
+      operationId: postAmazonReviewForJustificationProbabilities
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+       - in: body
+         name: AmazonReview
+         required: true
+         schema:
+          $ref: "#/definitions/AmazonReview"
+      responses:
+        200:
+          description: JSON object.
+          schema:
+            $ref: "#/definitions/Result"
+        400:
+          description: bad input or could not process.
+definitions:
+  AmazonReview:
+    type: object
+    properties:
+      Title:
+        type: string
+        example: Switching to competitor        
+      Body:
+        type: string
+        example: I bought this product because I am a long time user but lately I like other products more.
+      Rating:
+        type: number
+        example: 3.0
+  Result:
+    type: object
+    properties:
+      data:
+        type:  object
+        properties:
+          False: 
+            type: number
+            example: 0.80
+          True:
+            type: number
+            example: 0.20

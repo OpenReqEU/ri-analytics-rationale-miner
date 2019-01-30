@@ -1,0 +1,8 @@
+POST http://0.0.0.0:8085/urminer-review/issue HTTP/1.1
+content-type: application/json
+
+{
+  "Body": "I bought this product because I am a long time committed Quicken user, and I was not willing to switch to the Mac version when I bought a iMac computer, based on the terrible reviews of the software.Parallels has made it possible for me to run Quicken 2014 easily.My only complaint is that my son likes to play video games and I tried to use parallels with Steam and their game Space Engineers, but the video adapter used by Parallels isn't compatible.",
+  "Title": "Hello World",
+  "Rating": 3.0
+}
